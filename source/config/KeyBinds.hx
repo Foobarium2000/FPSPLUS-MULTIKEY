@@ -21,10 +21,10 @@ class KeyBinds
         FlxG.save.data.leftBind = "A";
         FlxG.save.data.rightBind = "D";
         FlxG.save.data.L1Bind = "S";
-        FlxG.save.data.U1Bind = "D";
+        FlxG.save.data.D1Bind = "K";
         FlxG.save.data.R1Bind = "F";
         FlxG.save.data.L2Bind = "J";
-        FlxG.save.data.D1Bind = "K";
+        FlxG.save.data.U1Bind = "D";
         FlxG.save.data.R2Bind = "L";
         FlxG.save.data.B1Bind = "A";
         FlxG.save.data.B2Bind = "S";
@@ -69,8 +69,8 @@ class KeyBinds
             FlxG.save.data.L1Bind = "S";
             trace("No L1");
         }
-        if(FlxG.save.data.U1Bind == null){
-            FlxG.save.data.U1Bind = "D";
+        if(FlxG.save.data.D1Bind == null){
+            FlxG.save.data.D1Bind = "D";
             trace("No U1");
         }
         if(FlxG.save.data.R1Bind == null){
@@ -81,8 +81,8 @@ class KeyBinds
             FlxG.save.data.L2Bind = "J";
             trace("No L2");
         }
-        if(FlxG.save.data.D1Bind == null){
-            FlxG.save.data.D1Bind = "K";
+        if(FlxG.save.data.U1Bind == null){
+            FlxG.save.data.U1Bind = "K";
             trace("No D1");
         }
         if(FlxG.save.data.R2Bind == null){

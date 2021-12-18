@@ -1135,6 +1135,7 @@ class PlayState extends MusicBeatState
 		generateStaticArrows(0);
 		generateStaticArrows(1);
 		trace(SONG.mania);
+		trace(mania);
 
 		talking = false;
 		startedCountdown = true;
@@ -2139,15 +2140,15 @@ class PlayState extends MusicBeatState
 		var key = FlxKey.toStringMap.get(Keyboard.__convertKeyCode(evt.keyCode));
 	
 		var binds:Array<String> = [FlxG.save.data.leftBind,FlxG.save.data.downBind, FlxG.save.data.upBind, FlxG.save.data.rightBind];
-		if (SONG.mania == 0)
+		if (mania == 0)
 			binds = [FlxG.save.data.leftBind,FlxG.save.data.downBind, FlxG.save.data.upBind, FlxG.save.data.rightBind];		
-		if (SONG.mania == 1)
+		if (mania == 1)
 			binds = [FlxG.save.data.L1Bind, FlxG.save.data.U1Bind, FlxG.save.data.R1Bind, FlxG.save.data.L2Bind, FlxG.save.data.D1Bind, FlxG.save.data.R2Bind];
-		if (SONG.mania == 2)
+		if (mania == 2)
 			binds = [FlxG.save.data.B1Bind, FlxG.save.data.B2Bind, FlxG.save.data.B3Bind, FlxG.save.data.B4Bind, FlxG.save.data.B5Bind, FlxG.save.data.B6Bind, FlxG.save.data.B7Bind, FlxG.save.data.B8Bind, FlxG.save.data.B9Bind];
 		var data = -1;
 
-		if (SONG.mania == 0)
+		if (mania == 0)
 		{
 			switch(evt.keyCode) // arrow keys
 			{
@@ -2161,7 +2162,7 @@ class PlayState extends MusicBeatState
 					data = 3;
 			}
 		}
-		else if (SONG.mania == 1)
+		else if (mania == 1)
 			{
 				switch(evt.keyCode) // arrow keys
 				{
@@ -2173,7 +2174,7 @@ class PlayState extends MusicBeatState
 						data = 5;
 				}
 			}
-		else if (SONG.mania == 2)
+		else if (mania == 2)
 			{
 				switch(evt.keyCode) // arrow keys
 				{
@@ -2244,17 +2245,17 @@ class PlayState extends MusicBeatState
 		var key = FlxKey.toStringMap.get(Keyboard.__convertKeyCode(evt.keyCode));
 	
 		var binds:Array<String> = [FlxG.save.data.leftBind,FlxG.save.data.downBind, FlxG.save.data.upBind, FlxG.save.data.rightBind];
-		if (SONG.mania == 0)
+		if (mania == 0)
 			binds = [FlxG.save.data.leftBind,FlxG.save.data.downBind, FlxG.save.data.upBind, FlxG.save.data.rightBind];
-		if (SONG.mania == 1)
+		if (mania == 1)
 			binds = [FlxG.save.data.L1Bind, FlxG.save.data.U1Bind, FlxG.save.data.R1Bind, FlxG.save.data.L2Bind, FlxG.save.data.D1Bind, FlxG.save.data.R2Bind];		
-		if (SONG.mania == 2)
+		if (mania == 2)
 			binds = [FlxG.save.data.B1Bind, FlxG.save.data.B2Bind, FlxG.save.data.B3Bind, FlxG.save.data.B4Bind, FlxG.save.data.B5Bind, FlxG.save.data.B6Bind, FlxG.save.data.B7Bind, FlxG.save.data.B8Bind, FlxG.save.data.B9Bind];
 
 		var data = -1;
 
 
-		if (SONG.mania == 0)
+		if (mania == 0)
 			{
 				switch(evt.keyCode) // arrow keys
 				{
@@ -2268,7 +2269,7 @@ class PlayState extends MusicBeatState
 						data = 3;
 				}
 			}
-			else if (SONG.mania == 1)
+			else if (mania == 1)
 				{
 					switch(evt.keyCode) // arrow keys
 					{
@@ -2280,7 +2281,7 @@ class PlayState extends MusicBeatState
 							data = 5;
 					}
 				}
-		else if (SONG.mania == 2)
+		else if (mania == 2)
 			{
 				switch(evt.keyCode) // arrow keys
 				{
@@ -2338,7 +2339,7 @@ class PlayState extends MusicBeatState
 
 	private function keyCheck():Void{
 
-		if (SONG.mania == 1)
+		if (mania == 1)
 		{
 			upTime = controls.R1 ? upTime + 1 : 0;
 			downTime = controls.D1 ? downTime + 1 : 0; 
@@ -2347,7 +2348,7 @@ class PlayState extends MusicBeatState
 			n5Time = controls.U1 ? n5Time + 1 : 0;
 			n6Time = controls.R2 ? n6Time + 1 : 0; 
 		}
-		else if (SONG.mania == 2)
+		else if (mania == 2)
 		{
 			upTime = controls.B3 ? upTime + 1 : 0;
 			downTime = controls.B2 ? downTime + 1 : 0; 
@@ -2359,7 +2360,7 @@ class PlayState extends MusicBeatState
 			n8Time = controls.B8 ? n8Time + 1 : 0;
 			n9Time = controls.B9 ? n9Time + 1 : 0;
 		}
-		else
+		else if (mania == 0)
 		{
 			upTime = controls.UP ? upTime + 1 : 0;
 			downTime = controls.DOWN ? downTime + 1 : 0;

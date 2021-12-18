@@ -23,10 +23,10 @@ class KeyBindMenuSix extends MusicBeatState
     var curSelected:Int = 0;
 
     var keys:Array<String> = [FlxG.save.data.L1Bind,
-                              FlxG.save.data.U1Bind,
+                              FlxG.save.data.D1Bind,
                               FlxG.save.data.R1Bind,
                               FlxG.save.data.L2Bind,
-                              FlxG.save.data.D1Bind,
+                              FlxG.save.data.U1Bind,
                               FlxG.save.data.R2Bind,
                               FlxG.save.data.killBind];
 
@@ -178,10 +178,10 @@ class KeyBindMenuSix extends MusicBeatState
     function save(){
 
         FlxG.save.data.L1Bind = keys[0]; // 0
-        FlxG.save.data.U1Bind = keys[1]; // 2
+        FlxG.save.data.D1Bind = keys[1]; // 2
         FlxG.save.data.R1Bind = keys[2]; // 2
         FlxG.save.data.L2Bind = keys[3]; // 3 
-        FlxG.save.data.D1Bind = keys[4]; // 1
+        FlxG.save.data.U1Bind = keys[4]; // 1
         FlxG.save.data.R2Bind = keys[5]; // 5
         FlxG.save.data.killBind = keys[6];
 
