@@ -1480,7 +1480,7 @@ class ChartingState extends MusicBeatState
 		}
 		if (_song.mania == 1)
 		{
-			strumColors = [0xFFF9393F, 0xFF12FA05, 0xFFF9393F, 0xFFFFFF00, 0xFF00FFFF, 0xFF0033FF];
+			strumColors = [0xFFC24B99, 0xFF12FA05, 0xFFF9393F, 0xFFFFFF00, 0xFF00FFFF, 0xFF0033FF];
 		}
 		if (_song.mania == 2)
 		{
