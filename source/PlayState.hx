@@ -2139,6 +2139,8 @@ class PlayState extends MusicBeatState
 		var key = FlxKey.toStringMap.get(Keyboard.__convertKeyCode(evt.keyCode));
 	
 		var binds:Array<String> = [FlxG.save.data.leftBind,FlxG.save.data.downBind, FlxG.save.data.upBind, FlxG.save.data.rightBind];
+		if (SONG.mania == 0)
+			binds = [FlxG.save.data.leftBind,FlxG.save.data.downBind, FlxG.save.data.upBind, FlxG.save.data.rightBind];		
 		if (SONG.mania == 1)
 			binds = [FlxG.save.data.L1Bind, FlxG.save.data.U1Bind, FlxG.save.data.R1Bind, FlxG.save.data.L2Bind, FlxG.save.data.D1Bind, FlxG.save.data.R2Bind];
 		if (SONG.mania == 2)
@@ -2242,6 +2244,8 @@ class PlayState extends MusicBeatState
 		var key = FlxKey.toStringMap.get(Keyboard.__convertKeyCode(evt.keyCode));
 	
 		var binds:Array<String> = [FlxG.save.data.leftBind,FlxG.save.data.downBind, FlxG.save.data.upBind, FlxG.save.data.rightBind];
+		if (SONG.mania == 0)
+			binds = [FlxG.save.data.leftBind,FlxG.save.data.downBind, FlxG.save.data.upBind, FlxG.save.data.rightBind];
 		if (SONG.mania == 1)
 			binds = [FlxG.save.data.L1Bind, FlxG.save.data.U1Bind, FlxG.save.data.R1Bind, FlxG.save.data.L2Bind, FlxG.save.data.D1Bind, FlxG.save.data.R2Bind];		
 		if (SONG.mania == 2)
@@ -2334,13 +2338,6 @@ class PlayState extends MusicBeatState
 
 	private function keyCheck():Void{
 
-		if (SONG.mania == 0)
-		{
-			upTime = controls.UP ? upTime + 1 : 0;
-			downTime = controls.DOWN ? downTime + 1 : 0;
-			leftTime = controls.LEFT ? leftTime + 1 : 0;
-			rightTime = controls.RIGHT ? rightTime + 1 : 0;
-		}
 		if (SONG.mania == 1)
 		{
 			upTime = controls.R1 ? upTime + 1 : 0;
@@ -2350,7 +2347,7 @@ class PlayState extends MusicBeatState
 			n5Time = controls.U1 ? n5Time + 1 : 0;
 			n6Time = controls.R2 ? n6Time + 1 : 0; 
 		}
-		if (SONG.mania == 2)
+		else if (SONG.mania == 2)
 		{
 			upTime = controls.B3 ? upTime + 1 : 0;
 			downTime = controls.B2 ? downTime + 1 : 0; 
@@ -2361,6 +2358,13 @@ class PlayState extends MusicBeatState
 			n7Time = controls.B7 ? n7Time + 1 : 0;
 			n8Time = controls.B8 ? n8Time + 1 : 0;
 			n9Time = controls.B9 ? n9Time + 1 : 0;
+		}
+		else
+		{
+			upTime = controls.UP ? upTime + 1 : 0;
+			downTime = controls.DOWN ? downTime + 1 : 0;
+			leftTime = controls.LEFT ? leftTime + 1 : 0;
+			rightTime = controls.RIGHT ? rightTime + 1 : 0;
 		}
 		upPress = upTime == 1;
 		downPress = downTime == 1;
