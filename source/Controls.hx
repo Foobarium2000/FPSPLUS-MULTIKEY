@@ -33,6 +33,57 @@ enum abstract Action(String) to String from String
 	var PAUSE = "pause";
 	var RESET = "reset";
 	var CHEAT = "cheat";
+
+	var L1 = "l1";
+	var U1 = "u1";
+	var R1 = "r1";
+	var L2 = "l2";
+	var D1 = "d1";
+	var R2 = "r2";
+
+	var L1_P = "l1-press";
+	var U1_P = "u1-press";
+	var R1_P = "r1-press";
+	var L2_P = "l2-press";
+	var D1_P = "d1-press";
+	var R2_P = "r2-press";
+
+	var L1_R = "l1-release";
+	var U1_R = "u1-release";
+	var R1_R = "r1-release";
+	var L2_R = "l2-release";
+	var D1_R = "d1-release";
+	var R2_R = "r2-release";
+
+	var B1 = 'b1';
+	var B2 = 'b2';
+	var B3 = 'b3';
+	var B4 = 'b4';
+	var B5 = 'b5';
+	var B6 = 'b6';
+	var B7 = 'b7';
+	var B8 = 'b8';
+	var B9 = 'b9';
+
+	var B1_P = 'b1-press';
+	var B2_P = 'b2-press';
+	var B3_P = 'b3-press';
+	var B4_P = 'b4-press';
+	var B5_P = 'b5-press';
+	var B6_P = 'b6-press';
+	var B7_P = 'b7-press';
+	var B8_P = 'b8-press';
+	var B9_P = 'b9-press';
+
+	var B1_R = 'b1-release';
+	var B2_R = 'b2-release';
+	var B3_R = 'b3-release';
+	var B4_R = 'b4-release';
+	var B5_R = 'b5-release';
+	var B6_R = 'b6-release';
+	var B7_R = 'b7-release';
+	var B8_R = 'b8-release';
+	var B9_R = 'b9-release';
 }
 #else
 @:enum
@@ -55,6 +106,57 @@ abstract Action(String) to String from String
 	var PAUSE = "pause";
 	var RESET = "reset";
 	var CHEAT = "cheat";
+
+	var L1 = "l1";
+	var U1 = "u1";
+	var R1 = "r1";
+	var L2 = "l2";
+	var D1 = "d1";
+	var R2 = "r2";
+
+	var L1_P = "l1-press";
+	var U1_P = "u1-press";
+	var R1_P = "r1-press";
+	var L2_P = "l2-press";
+	var D1_P = "d1-press";
+	var R2_P = "r2-press";
+
+	var L1_R = "l1-release";
+	var U1_R = "u1-release";
+	var R1_R = "r1-release";
+	var L2_R = "l2-release";
+	var D1_R = "d1-release";
+	var R2_R = "r2-release";
+
+	var B1 = 'b1';
+	var B2 = 'b2';
+	var B3 = 'b3';
+	var B4 = 'b4';
+	var B5 = 'b5';
+	var B6 = 'b6';
+	var B7 = 'b7';
+	var B8 = 'b8';
+	var B9 = 'b9';
+
+	var B1_P = 'b1-press';
+	var B2_P = 'b2-press';
+	var B3_P = 'b3-press';
+	var B4_P = 'b4-press';
+	var B5_P = 'b5-press';
+	var B6_P = 'b6-press';
+	var B7_P = 'b7-press';
+	var B8_P = 'b8-press';
+	var B9_P = 'b9-press';
+
+	var B1_R = 'b1-release';
+	var B2_R = 'b2-release';
+	var B3_R = 'b3-release';
+	var B4_R = 'b4-release';
+	var B5_R = 'b5-release';
+	var B6_R = 'b6-release';
+	var B7_R = 'b7-release';
+	var B8_R = 'b8-release';
+	var B9_R = 'b9-release';
 }
 #end
 
@@ -80,6 +182,22 @@ enum Control
 	BACK;
 	PAUSE;
 	CHEAT;
+	L1;
+	U1;
+	R1;
+	L2;
+	D1;
+	R2;
+
+	B1;
+	B2;
+	B3;
+	B4;
+	B5;
+	B6;
+	B7;
+	B8;
+	B9;
 }
 
 enum KeyboardScheme
@@ -113,6 +231,61 @@ class Controls extends FlxActionSet
 	var _pause = new FlxActionDigital(Action.PAUSE);
 	var _reset = new FlxActionDigital(Action.RESET);
 	var _cheat = new FlxActionDigital(Action.CHEAT);
+
+	
+	var _l1 = new FlxActionDigital(Action.L1);
+	var _l1P = new FlxActionDigital(Action.L1_P);
+	var _l1R = new FlxActionDigital(Action.L1_R);
+
+	var _u1 = new FlxActionDigital(Action.U1);
+	var _u1P = new FlxActionDigital(Action.U1_P);
+	var _u1R = new FlxActionDigital(Action.U1_R);
+
+	var _r1 = new FlxActionDigital(Action.R1);
+	var _r1P = new FlxActionDigital(Action.R1_P);
+	var _r1R = new FlxActionDigital(Action.R1_R);
+
+	var _l2 = new FlxActionDigital(Action.L2);
+	var _l2P = new FlxActionDigital(Action.L2_P);
+	var _l2R = new FlxActionDigital(Action.L2_R);
+
+	var _d1 = new FlxActionDigital(Action.D1);
+	var _d1P = new FlxActionDigital(Action.D1_P);
+	var _d1R = new FlxActionDigital(Action.D1_R);
+
+	var _r2 = new FlxActionDigital(Action.R2);
+	var _r2P = new FlxActionDigital(Action.R2_P);
+	var _r2R = new FlxActionDigital(Action.R2_R);
+
+	var _b1 = new FlxActionDigital(Action.B1);
+	var _b2 = new FlxActionDigital(Action.B2);
+	var _b3 = new FlxActionDigital(Action.B3);
+	var _b4 = new FlxActionDigital(Action.B4);
+	var _b5 = new FlxActionDigital(Action.B5);
+	var _b6 = new FlxActionDigital(Action.B6);
+	var _b7 = new FlxActionDigital(Action.B7);
+	var _b8 = new FlxActionDigital(Action.B8);
+	var _b9 = new FlxActionDigital(Action.B9);
+
+	var _b1P = new FlxActionDigital(Action.B1_P);
+	var _b2P = new FlxActionDigital(Action.B2_P);
+	var _b3P = new FlxActionDigital(Action.B3_P);
+	var _b4P = new FlxActionDigital(Action.B4_P);
+	var _b5P = new FlxActionDigital(Action.B5_P);
+	var _b6P = new FlxActionDigital(Action.B6_P);
+	var _b7P = new FlxActionDigital(Action.B7_P);
+	var _b8P = new FlxActionDigital(Action.B8_P);
+	var _b9P = new FlxActionDigital(Action.B9_P);
+
+	var _b1R = new FlxActionDigital(Action.B1_R);
+	var _b2R = new FlxActionDigital(Action.B2_R);
+	var _b3R = new FlxActionDigital(Action.B3_R);
+	var _b4R = new FlxActionDigital(Action.B4_R);
+	var _b5R = new FlxActionDigital(Action.B5_R);
+	var _b6R = new FlxActionDigital(Action.B6_R);
+	var _b7R = new FlxActionDigital(Action.B7_R);
+	var _b8R = new FlxActionDigital(Action.B8_R);
+	var _b9R = new FlxActionDigital(Action.B9_R);
 
 	#if (haxe >= "4.0.0")
 	var byName:Map<String, FlxActionDigital> = [];
@@ -208,6 +381,127 @@ class Controls extends FlxActionSet
 	inline function get_CHEAT()
 		return _cheat.check();
 
+	public var L1(get, never):Bool;
+
+	inline function get_L1()
+		return _l1.check();
+
+	public var L1_P(get, never):Bool;
+
+	inline function get_L1_P()
+		return _l1P.check();
+
+	public var L1_R(get, never):Bool;
+
+	inline function get_L1_R()
+		return _l1R.check();	
+
+	public var D1(get, never):Bool;
+
+	inline function get_D1()
+		return _d1.check();
+
+	public var D1_P(get, never):Bool;
+
+	inline function get_D1_P()
+		return _d1P.check();
+
+	public var D1_R(get, never):Bool;
+
+	inline function get_D1_R()
+		return _d1R.check();
+
+	public var R1(get, never):Bool;
+
+	inline function get_R1()
+		return _r1.check();
+
+	public var R1_P(get, never):Bool;
+
+	inline function get_R1_P()
+		return _r1P.check();
+
+	public var R1_R(get, never):Bool;
+
+	inline function get_R1_R()
+		return _r1R.check();	
+
+
+	public var L2(get, never):Bool;
+
+	inline function get_L2()
+		return _l2.check();
+
+	public var L2_P(get, never):Bool;
+
+	inline function get_L2_P()
+		return _l2P.check();
+
+	public var L2_R(get, never):Bool;
+
+	inline function get_L2_R()
+		return _l2R.check();	
+
+	public var U1(get, never):Bool;
+
+	inline function get_U1()
+		return _u1.check();
+
+	public var U1_P(get, never):Bool;
+
+	inline function get_U1_P()
+		return _u1P.check();
+
+	public var U1_R(get, never):Bool;
+
+	inline function get_U1_R()
+		return _u1R.check();
+
+	public var R2(get, never):Bool;
+
+	inline function get_R2()
+		return _r2.check();
+
+	public var R2_P(get, never):Bool;
+
+	inline function get_R2_P()
+		return _r2P.check();
+
+	public var R2_R(get, never):Bool;
+
+	inline function get_R2_R()
+		return _r2R.check();
+	
+	public var B1(get, never):Bool; inline function get_B1() {return _b1.check();}
+	public var B2(get, never):Bool; inline function get_B2() {return _b2.check();}
+	public var B3(get, never):Bool; inline function get_B3() {return _b3.check();}
+	public var B4(get, never):Bool; inline function get_B4() {return _b4.check();}
+	public var B5(get, never):Bool; inline function get_B5() {return _b5.check();}
+	public var B6(get, never):Bool; inline function get_B6() {return _b6.check();}
+	public var B7(get, never):Bool; inline function get_B7() {return _b7.check();}
+	public var B8(get, never):Bool; inline function get_B8() {return _b8.check();}
+	public var B9(get, never):Bool; inline function get_B9() {return _b9.check();}
+
+	public var B1_P(get, never):Bool; inline function get_B1_P() {return _b1P.check();}
+	public var B2_P(get, never):Bool; inline function get_B2_P() {return _b2P.check();}
+	public var B3_P(get, never):Bool; inline function get_B3_P() {return _b3P.check();}
+	public var B4_P(get, never):Bool; inline function get_B4_P() {return _b4P.check();}
+	public var B5_P(get, never):Bool; inline function get_B5_P() {return _b5P.check();}
+	public var B6_P(get, never):Bool; inline function get_B6_P() {return _b6P.check();}
+	public var B7_P(get, never):Bool; inline function get_B7_P() {return _b7P.check();}
+	public var B8_P(get, never):Bool; inline function get_B8_P() {return _b8P.check();}
+	public var B9_P(get, never):Bool; inline function get_B9_P() {return _b9P.check();}
+
+	public var B1_R(get, never):Bool; inline function get_B1_R() {return _b1R.check();}
+	public var B2_R(get, never):Bool; inline function get_B2_R() {return _b2R.check();}
+	public var B3_R(get, never):Bool; inline function get_B3_R() {return _b3R.check();}
+	public var B4_R(get, never):Bool; inline function get_B4_R() {return _b4R.check();}
+	public var B5_R(get, never):Bool; inline function get_B5_R() {return _b5R.check();}
+	public var B6_R(get, never):Bool; inline function get_B6_R() {return _b6R.check();}
+	public var B7_R(get, never):Bool; inline function get_B7_R() {return _b7R.check();}
+	public var B8_R(get, never):Bool; inline function get_B8_R() {return _b8R.check();}
+	public var B9_R(get, never):Bool; inline function get_B9_R() {return _b9R.check();}
+
 	#if (haxe >= "4.0.0")
 	public function new(name, scheme = None)
 	{
@@ -231,6 +525,56 @@ class Controls extends FlxActionSet
 		add(_reset);
 		add(_cheat);
 
+		
+		add(_l1);
+		add(_l1P);
+		add(_l1R);
+		add(_d1);
+		add(_d1P);
+		add(_d1R);
+		add(_r1);
+		add(_r1P);
+		add(_r1R);
+
+		add(_l2);
+		add(_l2P);
+		add(_l2R);
+		add(_u1);
+		add(_u1P);
+		add(_u1R);
+		add(_r2);
+		add(_r2P);
+		add(_r2R);
+
+		add(_b1);
+		add(_b2);
+		add(_b3);
+		add(_b4);
+		add(_b5);
+		add(_b6);
+		add(_b7);
+		add(_b8);
+		add(_b9);
+
+		add(_b1P);
+		add(_b2P);
+		add(_b3P);
+		add(_b4P);
+		add(_b5P);
+		add(_b6P);
+		add(_b7P);
+		add(_b8P);
+		add(_b9P);
+
+		add(_b1R);
+		add(_b2R);
+		add(_b3R);
+		add(_b4R);
+		add(_b5R);
+		add(_b6R);
+		add(_b7R);
+		add(_b8R);
+		add(_b9R);
 		for (action in digitalActions)
 			byName[action.name] = action;
 
@@ -258,6 +602,56 @@ class Controls extends FlxActionSet
 		add(_pause);
 		add(_reset);
 		add(_cheat);
+		
+		add(_l1);
+		add(_l1P);
+		add(_l1R);
+		add(_d1);
+		add(_d1P);
+		add(_d1R);
+		add(_r1);
+		add(_r1P);
+		add(_r1R);
+
+		add(_l2);
+		add(_l2P);
+		add(_l2R);
+		add(_u1);
+		add(_u1P);
+		add(_u1R);
+		add(_r2);
+		add(_r2P);
+		add(_r2R);
+
+		add(_b1);
+		add(_b2);
+		add(_b3);
+		add(_b4);
+		add(_b5);
+		add(_b6);
+		add(_b7);
+		add(_b8);
+		add(_b9);
+
+		add(_b1P);
+		add(_b2P);
+		add(_b3P);
+		add(_b4P);
+		add(_b5P);
+		add(_b6P);
+		add(_b7P);
+		add(_b8P);
+		add(_b9P);
+
+		add(_b1R);
+		add(_b2R);
+		add(_b3R);
+		add(_b4R);
+		add(_b5R);
+		add(_b6R);
+		add(_b7R);
+		add(_b8R);
+		add(_b9R);
 
 		for (action in digitalActions)
 			byName[action.name] = action;
@@ -312,6 +706,23 @@ class Controls extends FlxActionSet
 			case PAUSE: _pause;
 			case RESET: _reset;
 			case CHEAT: _cheat;
+
+			case L1: _l1;
+			case D1: _d1;
+			case R1: _r1;
+			case L2: _l2;
+			case U1: _u1;
+			case R2: _r2;
+
+			case B1: _b1;
+			case B2: _b2;
+			case B3: _b3;
+			case B4: _b4;
+			case B5: _b5;
+			case B6: _b6;
+			case B7: _b7;
+			case B8: _b8;
+			case B9: _b9;
 		}
 	}
 
@@ -357,6 +768,68 @@ class Controls extends FlxActionSet
 				func(_reset, JUST_PRESSED);
 			case CHEAT:
 				func(_cheat, JUST_PRESSED);
+
+			case L1:
+				func(_l1, PRESSED);
+				func(_l1P, JUST_PRESSED);
+				func(_l1R, JUST_RELEASED);
+			case U1:
+				func(_u1, PRESSED);
+				func(_u1P, JUST_PRESSED);
+				func(_u1R, JUST_RELEASED);
+			case R1:
+				func(_r1, PRESSED);
+				func(_r1P, JUST_PRESSED);
+				func(_r1R, JUST_RELEASED);
+			case L2:
+				func(_l2, PRESSED);
+				func(_l2P, JUST_PRESSED);
+				func(_l2R, JUST_RELEASED);
+			case D1:
+				func(_d1, PRESSED);
+				func(_d1P, JUST_PRESSED);
+				func(_d1R, JUST_RELEASED);
+			case R2:
+				func(_r2, PRESSED);
+				func(_r2P, JUST_PRESSED);
+				func(_r2R, JUST_RELEASED);
+				
+			case B1:
+				func(_b1, PRESSED);
+				func(_b1P, JUST_PRESSED);
+				func(_b1R, JUST_RELEASED);
+			case B2:
+				func(_b2, PRESSED);
+				func(_b2P, JUST_PRESSED);
+				func(_b2R, JUST_RELEASED);
+			case B3:
+				func(_b3, PRESSED);
+				func(_b3P, JUST_PRESSED);
+				func(_b3R, JUST_RELEASED);
+			case B4:
+				func(_b4, PRESSED);
+				func(_b4P, JUST_PRESSED);
+				func(_b4R, JUST_RELEASED);
+			case B5:
+				func(_b5, PRESSED);
+				func(_b5P, JUST_PRESSED);
+				func(_b5R, JUST_RELEASED);
+			case B6:
+				func(_b6, PRESSED);
+				func(_b6P, JUST_PRESSED);
+				func(_b6R, JUST_RELEASED);
+			case B7:
+				func(_b7, PRESSED);
+				func(_b7P, JUST_PRESSED);
+				func(_b7R, JUST_RELEASED);
+			case B8:
+				func(_b8, PRESSED);
+				func(_b8P, JUST_PRESSED);
+				func(_b8R, JUST_RELEASED);
+			case B9:
+				func(_b9, PRESSED);
+				func(_b9P, JUST_PRESSED);
+				func(_b9R, JUST_RELEASED);				
 		}
 	}
 
@@ -581,6 +1054,21 @@ class Controls extends FlxActionSet
 		inline bindKeys(Control.ACCEPT, [SPACE, ENTER]);
 		inline bindKeys(Control.BACK, [BACKSPACE, ESCAPE]);
 		inline bindKeys(Control.PAUSE, [ENTER, ESCAPE]);
+		inline bindKeys(Control.L1, [FlxKey.fromString(FlxG.save.data.L1Bind)]);
+		inline bindKeys(Control.D1, [FlxKey.fromString(FlxG.save.data.D1Bind)]);
+		inline bindKeys(Control.R1, [FlxKey.fromString(FlxG.save.data.R1Bind)]);
+		inline bindKeys(Control.L2, [FlxKey.fromString(FlxG.save.data.L2Bind)]);
+		inline bindKeys(Control.U1, [FlxKey.fromString(FlxG.save.data.U1Bind)]);
+		inline bindKeys(Control.R2, [FlxKey.fromString(FlxG.save.data.R2Bind)]);
+		inline bindKeys(Control.B1, [FlxKey.fromString(FlxG.save.data.B1Bind)]);
+		inline bindKeys(Control.B2, [FlxKey.fromString(FlxG.save.data.B2Bind)]);
+		inline bindKeys(Control.B3, [FlxKey.fromString(FlxG.save.data.B3Bind)]);
+		inline bindKeys(Control.B4, [FlxKey.fromString(FlxG.save.data.B4Bind)]);
+		inline bindKeys(Control.B5, [FlxKey.fromString(FlxG.save.data.B5Bind)]);
+		inline bindKeys(Control.B6, [FlxKey.fromString(FlxG.save.data.B6Bind)]);
+		inline bindKeys(Control.B7, [FlxKey.fromString(FlxG.save.data.B7Bind)]);
+		inline bindKeys(Control.B8, [FlxKey.fromString(FlxG.save.data.B8Bind)]);
+		inline bindKeys(Control.B9, [FlxKey.fromString(FlxG.save.data.B9Bind)]);
 		inline bindKeys(Control.RESET, [FlxKey.fromString(FlxG.save.data.killBind)]);
 	}
 

@@ -61,7 +61,9 @@ class ConfigMenu extends MusicBeatState
 									"BACKGROUND DIM",
 									"[PRELOAD SETTINGS]",
 									"CONTROLLER SCHEME",
-									"[EDIT KEY BINDS]"
+									"[EDIT KEY BINDS]",
+									"[EDIT SIX KEY BINDS]",
+									"[EDIT NINE KEY BINDS]",
 									];
 		
 	//Any descriptions that say TEMP are replaced with a changing description based on the current config setting.
@@ -78,7 +80,9 @@ class ConfigMenu extends MusicBeatState
 									"Adjusts how dark the background is.\nIt is recommended that you use the HUD combo display with a high background dim.",
 									"Change what assets the game preloads on startup.\n[A restart is required for these changes.]",
 									"TEMP",
-									"Change key binds."
+									"Change key binds.",
+									"Change six key binds.",
+									"Change nine key binds."
 									];
 
 	final ghostTapDesc:Array<String> = [
@@ -488,7 +492,20 @@ class ConfigMenu extends MusicBeatState
 							writeToConfig();
 							switchState(new KeyBindMenu());
 						}
-					
+					case 13: //Binds 6k
+						if (controls.ACCEPT) {
+							FlxG.sound.play(Paths.sound('scrollMenu'));
+							canChangeItems = false;
+							writeToConfig();
+							switchState(new KeyBindMenuSix());
+						}						
+					case 14: //Binds 9k
+						if (controls.ACCEPT) {
+							FlxG.sound.play(Paths.sound('scrollMenu'));
+							canChangeItems = false;
+							writeToConfig();
+							switchState(new KeyBindMenuNine());
+						}
 			}
 		}
 		else if(FlxG.keys.pressed.TAB){
