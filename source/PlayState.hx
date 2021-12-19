@@ -69,7 +69,7 @@ class PlayState extends MusicBeatState
 	public static var storyPlaylist:Array<String> = [];
 	public static var storyDifficulty:Int = 1;
 	public static var mania:Int = 0;
-	public static var keyAmmo:Array<Int> = [4, 6, 9];
+	public static var keyAmmo:Array<Int> = [4, 6, 9, 7];
 	
 	public static var returnLocation:String = "main";
 	public static var returnSong:Int = 0;
@@ -1472,7 +1472,11 @@ class PlayState extends MusicBeatState
 						case 2:
 							nSuf = ['LEFT', 'DOWN', 'UP', 'RIGHT', 'SPACE', 'LEFT', 'DOWN', 'UP', 'RIGHT'];
 							pPre = ['left', 'down', 'up', 'right', 'white', 'yel', 'violet', 'black', 'dark'];
-							babyArrow.x -= Note.tooMuch;							
+							babyArrow.x -= Note.tooMuch;
+						case 3:
+							nSuf = ['LEFT', 'UP', 'RIGHT', 'SPACE', 'LEFT', 'DOWN', 'RIGHT'];
+							pPre = ['left', 'up', 'right', 'white', 'yel', 'down', 'dark'];
+							babyArrow.x -= Note.tooMuch;						
 					}
 					babyArrow.x += Note.swagWidth * i;
 					babyArrow.animation.addByPrefix('static', 'arrow' + nSuf[i]);
@@ -1945,13 +1949,17 @@ class PlayState extends MusicBeatState
 					// 		dad.playAnim('singLEFT' + altAnim, true);
 					// }
 					var dadsDir:Array<String> = ['LEFT', 'DOWN', 'UP', 'RIGHT'];
-					if (mania == 1)
+					switch (mania)
 					{
-						dadsDir = ['LEFT', 'UP', 'RIGHT', 'LEFT', 'DOWN', 'RIGHT'];
-					}
-					if (mania == 2)
-					{
-						dadsDir = ['LEFT', 'DOWN', 'UP', 'RIGHT', 'UP', 'LEFT', 'DOWN', 'UP', 'RIGHT'];
+						default:
+							dadsDir = ['LEFT', 'DOWN', 'UP', 'RIGHT'];
+						case 1:
+							dadsDir = ['LEFT', 'UP', 'RIGHT', 'LEFT', 'DOWN', 'RIGHT'];
+						case 2:
+							dadsDir = ['LEFT', 'DOWN', 'UP', 'RIGHT', 'UP', 'LEFT', 'DOWN', 'UP', 'RIGHT'];
+						case 3:
+							dadsDir = ['LEFT', 'UP', 'RIGHT', 'UP', 'LEFT', 'DOWN', 'RIGHT'];
+
 					}
 					dad.playAnim('sing' + dadsDir[daNote.noteData], true);
 				}
@@ -2140,12 +2148,17 @@ class PlayState extends MusicBeatState
 		var key = FlxKey.toStringMap.get(Keyboard.__convertKeyCode(evt.keyCode));
 	
 		var binds:Array<String> = [FlxG.save.data.leftBind,FlxG.save.data.downBind, FlxG.save.data.upBind, FlxG.save.data.rightBind];
-		if (mania == 0)
-			binds = [FlxG.save.data.leftBind,FlxG.save.data.downBind, FlxG.save.data.upBind, FlxG.save.data.rightBind];		
-		if (mania == 1)
-			binds = [FlxG.save.data.L1Bind, FlxG.save.data.U1Bind, FlxG.save.data.R1Bind, FlxG.save.data.L2Bind, FlxG.save.data.D1Bind, FlxG.save.data.R2Bind];
-		if (mania == 2)
-			binds = [FlxG.save.data.B1Bind, FlxG.save.data.B2Bind, FlxG.save.data.B3Bind, FlxG.save.data.B4Bind, FlxG.save.data.B5Bind, FlxG.save.data.B6Bind, FlxG.save.data.B7Bind, FlxG.save.data.B8Bind, FlxG.save.data.B9Bind];
+		switch (mania)
+		{
+			case 0:
+				binds = [FlxG.save.data.leftBind,FlxG.save.data.downBind, FlxG.save.data.upBind, FlxG.save.data.rightBind];
+			case 1:
+				binds = [FlxG.save.data.L1Bind, FlxG.save.data.U1Bind, FlxG.save.data.R1Bind, FlxG.save.data.L2Bind, FlxG.save.data.D1Bind, FlxG.save.data.R2Bind];
+			case 2:
+				binds = [FlxG.save.data.B1Bind, FlxG.save.data.B2Bind, FlxG.save.data.B3Bind, FlxG.save.data.B4Bind, FlxG.save.data.B5Bind, FlxG.save.data.B6Bind, FlxG.save.data.B7Bind, FlxG.save.data.B8Bind, FlxG.save.data.B9Bind];
+			case 3:
+				binds = [FlxG.save.data.L1Bind, FlxG.save.data.U1Bind, FlxG.save.data.R1Bind, FlxG.save.data.CENTERBind, FlxG.save.data.L2Bind, FlxG.save.data.D1Bind, FlxG.save.data.R2Bind];
+		}
 		var data = -1;
 
 		if (mania == 0)
@@ -2187,7 +2200,19 @@ class PlayState extends MusicBeatState
 					case 39:
 						data = 8;
 				}
-			}			
+			}
+		else if (mania == 3)
+			{
+				switch(evt.keyCode) // arrow keys
+				{
+					case 37:
+						data = 3;
+					case 40:
+						data = 4;
+					case 39:
+						data = 5;
+				}
+			}						
 
 		for (i in 0...binds.length) // binds
 		{
@@ -2245,13 +2270,17 @@ class PlayState extends MusicBeatState
 		var key = FlxKey.toStringMap.get(Keyboard.__convertKeyCode(evt.keyCode));
 	
 		var binds:Array<String> = [FlxG.save.data.leftBind,FlxG.save.data.downBind, FlxG.save.data.upBind, FlxG.save.data.rightBind];
-		if (mania == 0)
-			binds = [FlxG.save.data.leftBind,FlxG.save.data.downBind, FlxG.save.data.upBind, FlxG.save.data.rightBind];
-		if (mania == 1)
-			binds = [FlxG.save.data.L1Bind, FlxG.save.data.U1Bind, FlxG.save.data.R1Bind, FlxG.save.data.L2Bind, FlxG.save.data.D1Bind, FlxG.save.data.R2Bind];		
-		if (mania == 2)
-			binds = [FlxG.save.data.B1Bind, FlxG.save.data.B2Bind, FlxG.save.data.B3Bind, FlxG.save.data.B4Bind, FlxG.save.data.B5Bind, FlxG.save.data.B6Bind, FlxG.save.data.B7Bind, FlxG.save.data.B8Bind, FlxG.save.data.B9Bind];
-
+		switch (mania)
+		{
+			case 0:
+				binds = [FlxG.save.data.leftBind,FlxG.save.data.downBind, FlxG.save.data.upBind, FlxG.save.data.rightBind];
+			case 1:
+				binds = [FlxG.save.data.L1Bind, FlxG.save.data.U1Bind, FlxG.save.data.R1Bind, FlxG.save.data.L2Bind, FlxG.save.data.D1Bind, FlxG.save.data.R2Bind];
+			case 2:
+				binds = [FlxG.save.data.B1Bind, FlxG.save.data.B2Bind, FlxG.save.data.B3Bind, FlxG.save.data.B4Bind, FlxG.save.data.B5Bind, FlxG.save.data.B6Bind, FlxG.save.data.B7Bind, FlxG.save.data.B8Bind, FlxG.save.data.B9Bind];
+			case 3:
+				binds = [FlxG.save.data.L1Bind, FlxG.save.data.U1Bind, FlxG.save.data.R1Bind, FlxG.save.data.B5Bind, FlxG.save.data.L2Bind, FlxG.save.data.D1Bind, FlxG.save.data.R2Bind];
+		}
 		var data = -1;
 
 
@@ -2295,6 +2324,18 @@ class PlayState extends MusicBeatState
 						data = 8;
 				}
 			}
+			else if (mania == 3)
+				{
+					switch(evt.keyCode) // arrow keys
+					{
+						case 37:
+							data = 3;
+						case 40:
+							data = 4;
+						case 39:
+							data = 5;
+					}
+				}							
 
 		for (i in 0...binds.length) // binds
 		{
@@ -2367,6 +2408,16 @@ class PlayState extends MusicBeatState
 			leftTime = controls.LEFT ? leftTime + 1 : 0;
 			rightTime = controls.RIGHT ? rightTime + 1 : 0;
 		}
+		else if (mania == 3)
+		{
+			upTime = controls.R1 ? upTime + 1 : 0; 
+			downTime = controls.D1 ? downTime + 1 : 0; 
+			leftTime = controls.L1 ? leftTime + 1 : 0; 
+			rightTime = controls.B5 ? rightTime + 1 : 0;
+			n5Time = controls.L2 ? n5Time + 1 : 0; 
+			n6Time = controls.U1 ? n6Time + 1 : 0; 
+			n7Time = controls.R2 ? n7Time + 1 : 0; 
+		}		
 		upPress = upTime == 1;
 		downPress = downTime == 1;
 		leftPress = leftTime == 1;
@@ -2440,13 +2491,16 @@ class PlayState extends MusicBeatState
 				});
 
 				var directionsAccounted = [false,false,false,false];
-				if (SONG.mania == 1)
+				switch (mania)
 				{
-					directionsAccounted = [false, false, false, false, false, false];
-				}
-				if (SONG.mania == 2)
-				{
-					directionsAccounted = [false, false, false, false, false, false, false, false, false];
+					default:
+						directionsAccounted = [false, false, false, false];
+					case 1:
+						directionsAccounted = [false, false, false, false, false, false];
+					case 2:
+						directionsAccounted = [false, false, false, false, false, false, false, false, false];
+					case 3:
+						directionsAccounted = [false, false, false, false, false, false, false];
 				}
 				if (possibleNotes.length > 0)
 				{
@@ -2971,7 +3025,24 @@ class PlayState extends MusicBeatState
 					noteMissWrongPress(3);
 				if (n9Press)
 					noteMissWrongPress(1);
-			}			
+			}
+			if (SONG.mania == 3)
+			{
+				if (leftPress)
+					noteMissWrongPress(0);
+				if (upPress)
+					noteMissWrongPress(1);
+				if (downPress)
+					noteMissWrongPress(3);
+				if (rightPress)
+					noteMissWrongPress(2);
+				if (n5Press)
+					noteMissWrongPress(0);
+				if (n6Press)
+					noteMissWrongPress(2);
+				if (n7Press)
+					noteMissWrongPress(3);
+			}						
 		}
 	}
 
@@ -3064,13 +3135,16 @@ class PlayState extends MusicBeatState
 				// 	case 0:
 				// 		boyfriend.playAnim('singLEFT', true);
 				// }
-				if (mania == 1)
+				switch (mania)
 				{
-					sDir = ['LEFT', 'UP', 'RIGHT', 'LEFT', 'DOWN', 'RIGHT'];
-				}
-				if (mania == 2)
-				{
-					sDir = ['LEFT', 'DOWN', 'UP', 'RIGHT', 'UP', 'LEFT', 'DOWN', 'UP', 'RIGHT'];
+					default:
+						sDir = ['LEFT', 'UP', 'RIGHT', 'DOWN'];
+					case 1:
+						sDir = ['LEFT', 'UP', 'RIGHT', 'LEFT', 'DOWN', 'RIGHT'];
+					case 2:
+						sDir = ['LEFT', 'DOWN', 'UP', 'RIGHT', 'UP', 'LEFT', 'DOWN', 'UP', 'RIGHT'];
+					case 3:
+						sDir = ['LEFT', 'UP', 'RIGHT', 'UP', 'LEFT', 'DOWN', 'RIGHT'];
 				}				
 				boyfriend.playAnim('sing' + sDir[note.noteData], true);
 			}

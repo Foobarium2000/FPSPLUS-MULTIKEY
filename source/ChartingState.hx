@@ -103,7 +103,7 @@ class ChartingState extends MusicBeatState
 
 	var leftIcon:HealthIcon;
 	var rightIcon:HealthIcon;
-	var keyAmmo:Array<Int> = [4, 6, 9];
+	var keyAmmo:Array<Int> = [4, 6, 9, 7];
 
 	var leftIconBack:FlxSprite;
 	var rightIconBack:FlxSprite;
@@ -546,19 +546,25 @@ class ChartingState extends MusicBeatState
 		var applyLength:FlxButton = new FlxButton(100, 10, 'Apply');
 		var ammolabel = new FlxText(10,35,64,'Amount of Keys');
 
-		var m_check = new FlxButton(10, 165,"6",function()
+		var m_check = new FlxButton(10, 85,"6",function()
 		{
 			_song.mania = 1;
 			updateGrid();
 			trace('6 Keys pog');
 		});
-		var m_check2 = new FlxButton(10, 205,"9",function()
+		var m_check2 = new FlxButton(10, 125,"9",function()
 		{
 			_song.mania = 2;
 			updateGrid();
 			trace('9 Keys pog');
+		});
+		var m_check3 = new FlxButton(10, 105,"7",function()
+		{
+			_song.mania = 3;
+			updateGrid();
+			trace('7 Keys pog');
 		});		
-		var m_check0 = new FlxButton(10, 125,"4", function()
+		var m_check0 = new FlxButton(10, 65,"4", function()
 		{
 			_song.mania = 0;
 			updateGrid();
@@ -570,6 +576,7 @@ class ChartingState extends MusicBeatState
 		tab_group_note.add(ammolabel);
 		tab_group_note.add(m_check0);
 		tab_group_note.add(m_check);
+		tab_group_note.add(m_check3);
 		tab_group_note.add(m_check2);
 
 		UI_box.addGroup(tab_group_note);
@@ -873,7 +880,61 @@ class ChartingState extends MusicBeatState
 				add(gridBlackLine);
 				UI_box.x = FlxG.width / 2 + 340;
 				UI_box.y = 230;
-			}									
+			}
+		if (_song.mania == 3 && gridBG.width != GRID_SIZE * 14)
+			{
+				remove(leftIconBack);
+				remove(rightIconBack);
+				remove(leftIcon);
+				remove(rightIcon);
+				remove(gridBG2);
+				remove(gridBG);
+				remove(gridBGTriple);
+				remove(gridBGOverlay);
+				remove(gridBlackLine);
+				var gridBG2Length = 4;
+	
+				gridBG = FlxGridOverlay.create(GRID_SIZE, GRID_SIZE, GRID_SIZE * 14, GRID_SIZE * 16, true, 0xFFE7E7E7, 0xFFC5C5C5);
+		
+				gridBGTriple = FlxGridOverlay.create(GRID_SIZE, Std.int(GRID_SIZE * 4/3), GRID_SIZE * 14, GRID_SIZE * 16, true, 0xFFE7E7E7, 0xFFC5C5C5);
+				gridBGTriple.visible = false;
+		
+				gridBG2 = FlxGridOverlay.create(GRID_SIZE, GRID_SIZE, GRID_SIZE * 14, GRID_SIZE * 14 * gridBG2Length, true, 0xFF515151, 0xFF3D3D3D);
+		
+				gridBGOverlay = FlxGridOverlay.create(GRID_SIZE * 7, GRID_SIZE * 7, GRID_SIZE * 14, GRID_SIZE * 16 * gridBG2Length, true, 0xFFFFFFFF, 0xFFB5A5CE);
+				gridBGOverlay.blend = "multiply";
+		
+
+				leftIcon = new HealthIcon('bf');
+				rightIcon = new HealthIcon('dad');
+		
+				leftIcon.scrollFactor.set(1, 1);
+				rightIcon.scrollFactor.set(1, 1);
+		
+				leftIcon.iconScale = 0.5;
+				rightIcon.iconScale = 0.5;
+		
+				leftIcon.setPosition((gridBG.width / 4) - (leftIcon.width / 4), -75);
+				rightIcon.setPosition((gridBG.width / 4) * 3 - (rightIcon.width / 4), -75);
+		
+				leftIconBack = new FlxSprite(leftIcon.x - 2.5, leftIcon.y - 2.5).makeGraphic(75, 75, 0xFF00AAFF);
+				rightIconBack = new FlxSprite(rightIcon.x - 2.5, rightIcon.y - 2.5).makeGraphic(75, 75, 0xFF00AAFF);
+
+				gridBlackLine = new FlxSprite(gridBG.x + gridBG.width / 2).makeGraphic(2, Std.int(gridBG2.height), FlxColor.BLACK);
+				add(leftIconBack);
+				add(rightIconBack);
+				add(leftIcon);
+				add(rightIcon);
+				add(gridBG2);
+				add(gridBG);
+				add(gridBGTriple);
+				add(gridBGOverlay);
+				updateGrid();
+				updateSectionUI();
+				add(gridBlackLine);
+				UI_box.x = FlxG.width / 2 + 220;// + 160 * _song.mania;
+				UI_box.y = 100;
+			}																		
 
 			// UI_box.x = FlxG.width / 2 + 160;// + 160 * _song.mania;
 			// UI_box.y = 100;
@@ -1460,6 +1521,8 @@ class ChartingState extends MusicBeatState
 				noteAdjust = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 			case 2:
 				noteAdjust = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
+			case 3:
+				noteAdjust = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
 		}
 
 		if(_song.notes[curSec + secOffset].mustHitSection){
@@ -1471,6 +1534,8 @@ class ChartingState extends MusicBeatState
 					noteAdjust = [6, 7, 8, 9, 10, 11, 0, 1, 2, 3, 4, 5];
 				case 2:
 					noteAdjust = [9, 10, 11, 12, 13, 14, 15, 16, 17, 0, 1, 2, 3, 4, 5, 6, 7, 8];
+				case 3:
+					noteAdjust = [7, 8, 9, 10, 11, 12, 13, 0, 1, 2, 3, 4, 5, 6];
 			}
 		}
 
@@ -1485,6 +1550,10 @@ class ChartingState extends MusicBeatState
 		if (_song.mania == 2)
 		{
 			strumColors = [0xFFC24B99, 0xFF00FFFF, 0xFF12FA05, 0xFFF9393F, 0xFFCCCCCC, 0xFFFFFF00, 0xFF8B4AFF, 0xFFFF0000, 0xFF0033FF];
+		}
+		if (_song.mania == 3)
+		{
+			strumColors = [0xFFC24B99, 0xFF12FA05, 0xFFF9393F, 0xFFCCCCCC, 0xFFFFFF00, 0xFF00FFFF, 0xFF0033FF];
 		}
 
 		for (i in section)
@@ -1659,6 +1728,8 @@ class ChartingState extends MusicBeatState
 				noteAdjust = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 			case 2:
 				noteAdjust = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
+			case 3:
+				noteAdjust = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
 		}
 
 		if(_song.notes[curSection].mustHitSection){
@@ -1670,6 +1741,8 @@ class ChartingState extends MusicBeatState
 					noteAdjust = [6, 7, 8, 9, 10, 11, 0, 1, 2, 3, 4, 5];
 				case 2:
 					noteAdjust = [9, 10, 11, 12, 13, 14, 15, 16, 17, 0, 1, 2, 3, 4, 5, 6, 7, 8];
+				case 3:
+					noteAdjust = [7, 8, 9, 10, 11, 12, 13, 0, 1, 2, 3, 4, 5, 6];
 			}
 		}
 

@@ -54,6 +54,12 @@ class Note extends FlxSprite
 			swagWidth = 95 * 0.7;
 			noteScale = 0.5;
 			mania = 2;
+		}
+		else if (PlayState.SONG.mania == 3)
+		{
+			swagWidth = 110 * 0.7;
+			noteScale = 0.58;
+			mania = 3;
 		}				
 		super();
 
@@ -67,7 +73,7 @@ class Note extends FlxSprite
 		// MAKE SURE ITS DEFINITELY OFF SCREEN?
 		y -= 2000;
 
-		if (PlayState.SONG.mania == 2)
+		if (PlayState.SONG.mania == 2 || PlayState.SONG.mania == 3)
 			{
 				x -= tooMuch;
 			}
@@ -172,6 +178,7 @@ class Note extends FlxSprite
 		var frameN:Array<String> = ['purple', 'blue', 'green', 'red'];
 		if (mania == 1) frameN = ['purple', 'green', 'red', 'yellow', 'blue', 'dark'];
 		else if (mania == 2) frameN = ['purple', 'blue', 'green', 'red', 'white', 'yellow', 'violet', 'black', 'dark'];
+		else if (mania == 3) frameN = ['purple', 'green', 'red', 'white', 'yellow', 'blue', 'dark'];
 		x += swagWidth * noteData;
 		animation.play(frameN[noteData] + 'Scroll');
 
@@ -300,6 +307,7 @@ class Note extends FlxSprite
 		var frameN:Array<String> = ['purple', 'blue', 'green', 'red'];
 		if (mania == 1) frameN = ['purple', 'green', 'red', 'yellow', 'blue', 'dark'];
 		else if (mania == 2) frameN = ['purple', 'blue', 'green', 'red', 'white', 'yellow', 'violet', 'black', 'dark'];
+		else if (mania == 3) frameN = ['purple', 'green', 'red', 'white', 'yellow', 'blue', 'dark'];
 		animation.play(frameN[noteData] + 'Scroll');
 	}
 
@@ -320,6 +328,7 @@ class Note extends FlxSprite
 		var frameN:Array<String> = ['purple', 'blue', 'green', 'red'];
 		if (mania == 1) frameN = ['purple', 'green', 'red', 'yellow', 'blue', 'dark'];
 		else if (mania == 2) frameN = ['purple', 'blue', 'green', 'red', 'white', 'yellow', 'violet', 'black', 'dark'];
+		else if (mania == 3) frameN = ['purple', 'green', 'red', 'white', 'yellow', 'blue', 'dark'];
 		animation.play(frameN[noteData] + 'Scroll');
 	}
 }

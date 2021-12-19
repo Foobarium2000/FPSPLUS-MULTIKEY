@@ -426,7 +426,6 @@ class Controls extends FlxActionSet
 	inline function get_R1_R()
 		return _r1R.check();	
 
-
 	public var L2(get, never):Bool;
 
 	inline function get_L2()
@@ -612,6 +611,7 @@ class Controls extends FlxActionSet
 		add(_r1);
 		add(_r1P);
 		add(_r1R);
+
 
 		add(_l2);
 		add(_l2P);

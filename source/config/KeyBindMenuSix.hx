@@ -193,7 +193,7 @@ class KeyBindMenuSix extends MusicBeatState
 
     function reset(){
 
-        for(i in 0...7){
+        for(i in 0...8){
             keys[i] = defaultKeys[i];
         }
         quit();
